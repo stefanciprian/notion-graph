@@ -1,8 +1,11 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import Graph from "./components/Graph/Graph";
-import Graph3D from './components/Graph3D/Graph3D';
+// Dynamically import Graph and Graph3D with ssr: false
+const Graph = dynamic(() => import('./components/Graph/Graph'), { ssr: false });
+const Graph3D = dynamic(() => import('./components/Graph3D/Graph3D'), { ssr: false });
+
 
 export default function Home() {
   const [selectedNodeToZoom, setSelectedNodeToZoom] = useState("");
