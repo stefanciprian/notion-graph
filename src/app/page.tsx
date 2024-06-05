@@ -21,10 +21,10 @@ export default function Home() {
   useEffect(() => {
     const fetchGraphData = async () => {
       try {
-        const nodesResponse = await fetch('/api/v1/graph/getNodes');
+        const nodesResponse = await fetch('/api/v1/graph/get-nodes');
         const nodes = await nodesResponse.json();
 
-        const relationshipsResponse = await fetch('/api/v1/graph/getRelationships');
+        const relationshipsResponse = await fetch('/api/v1/graph/get-relationships');
         const relationships = await relationshipsResponse.json();
 
         setGraphData({
