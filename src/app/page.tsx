@@ -25,12 +25,20 @@ export default function Home() {
         const nodes = await nodesResponse.json();
 
         const relationshipsResponse = await fetch('/api/v1/graph/get-relationships');
-        const relationships = await relationshipsResponse.json();
+        const pages = await relationshipsResponse.json();
 
-        setGraphData({
-          nodes: nodes,
-          links: relationships,
-        });
+        const graph: any = {
+          nodes: pages.map((page: any) => {
+              return { id: page.id, name: page.properties.Name.title[0].plain_text };
+          }),
+          nodesWithLink: pages.map((page: any) => ({
+              source: page.properties["Source Node"].relation[0].id,
+              target: page.properties["Target Node"].relation[0].id,
+              rel: page.properties.Type.select
+          }))
+      };
+
+        setGraphData(graph);
       } catch (error) {
         console.error('Error fetching graph data:', error);
       }
