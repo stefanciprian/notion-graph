@@ -8,7 +8,7 @@ const notion = new Client({
 
 export async function GET() {
   try {
-    const databaseId = process.env.NOTION_RELATIONSHIPS_DATABASE_ID || "";
+    const databaseId = process.env.NOTION_NODES_DATABASE_ID || "";
     const response = await notion.databases.query({
       database_id: databaseId,
     });

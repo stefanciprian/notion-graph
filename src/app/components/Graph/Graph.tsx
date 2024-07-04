@@ -99,6 +99,8 @@ function Graph({ graphData, selectedNodeToZoom }: any) {
     return (
         <div className={styles.webView} id="graph2d">
             <ForceGraph
+                height={window.innerHeight}
+                width={window.innerWidth}
                 ref={fgRef}
                 graphData={graphData}
                 linkColor={(link: any) => '#999'}

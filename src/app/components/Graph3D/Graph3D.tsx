@@ -82,7 +82,6 @@ function Graph3D({ graphData, selectedNodeToZoom }: any) {
         }
     };
 
-
     useEffect(() => {
         if (selectedNodeToZoom) {
             setSelectedNode(selectedNodeToZoom);
@@ -95,7 +94,7 @@ function Graph3D({ graphData, selectedNodeToZoom }: any) {
     }, [graphData, selectedNodeToZoom, zoomToNode]);
 
     return (
-        <div className={styles.webView}>
+        <div className={styles.webView} id="graph3d">
             <ForceGraph3D
                 ref={fgRef}
                 graphData={graphData}
